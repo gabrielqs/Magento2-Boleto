@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Boleto -->
+    <virtualType name="gabrielqsBoletoMethodAdapter" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Gabrielqs\Boleto\Model\Boleto::CODE</argument>
+            <argument name="valueHandlerPool" xsi:type="object">gabrielqsBoletoValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">gabrielqsBoletoValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">gabrielqsBoletoCommandPool</argument>
+            <argument name="formBlockType" xsi:type="object">Magento\Payment\Block\Form\Cc</argument>
+            <argument name="infoBlockType" xsi:type="object">Magento\Payment\Block\Info\Cc</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="gabrielqsBoletoConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Gabrielqs\Boleto\Model\Boleto::CODE</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="gabrielqsBoletoConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">gabrielqsBoletoConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="gabrielqsBoletoValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">gabrielqsBoletoConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Remittance File Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\RemittanceFileRepositoryInterface" type="Gabrielqs\Boleto\Model\Remittance\FileRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileInterface" type="Gabrielqs\Boleto\Model\Remittance\File" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Remittance\File\Collection" />
+
+    <!-- Remittance File Event Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\RemittanceFileEventRepositoryInterface" type="Gabrielqs\Boleto\Model\Remittance\File\EventRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileEventInterface" type="Gabrielqs\Boleto\Model\Remittance\File\Event" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileEventSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Remittance\File\Event\Collection" />
+
+    <!-- Remittance File Order Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\RemittanceFileOrderRepositoryInterface" type="Gabrielqs\Boleto\Model\Remittance\File\OrderRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileOrderInterface" type="Gabrielqs\Boleto\Model\Remittance\File\Order" />
+    <preference for="Gabrielqs\Boleto\Api\Data\RemittanceFileOrderSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Remittance\File\Order\Collection" />
+
+    <!-- Returns File Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\ReturnsFileRepositoryInterface" type="Gabrielqs\Boleto\Model\Returns\FileRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileInterface" type="Gabrielqs\Boleto\Model\Returns\File" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Returns\File\Collection" />
+
+    <!-- Returns File Event Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\ReturnsFileEventRepositoryInterface" type="Gabrielqs\Boleto\Model\Returns\File\EventRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileEventInterface" type="Gabrielqs\Boleto\Model\Returns\File\Event" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileEventSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Returns\File\Event\Collection" />
+
+    <!-- Returns File Order Repository Preferences -->
+    <preference for="Gabrielqs\Boleto\Api\ReturnsFileOrderRepositoryInterface" type="Gabrielqs\Boleto\Model\Returns\File\OrderRepository" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileOrderInterface" type="Gabrielqs\Boleto\Model\Returns\File\Order" />
+    <preference for="Gabrielqs\Boleto\Api\Data\ReturnsFileOrderSearchResultsInterface" type="Gabrielqs\Boleto\Model\ResourceModel\Returns\File\Order\Collection" />
+
+    <!-- Return Files Admin Grid -->
+    <virtualType name="ReturnsFilesGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="boleto_returns_listing_data_source" xsi:type="string">Gabrielqs\Boleto\Model\ResourceModel\Returns\File\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Gabrielqs\Boleto\Model\ResourceModel\Returns\File\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">boleto_returns_file</argument>
+            <argument name="eventPrefix" xsi:type="string">boleto_returns_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">returns_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Gabrielqs\Boleto\Model\ResourceModel\Returns\File</argument>
+        </arguments>
+    </type>
+
+
+    <!-- Remittance Files Admin Grid -->
+    <virtualType name="RemittanceFilesGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="boleto_remittance_listing_data_source" xsi:type="string">Gabrielqs\Boleto\Model\ResourceModel\Remittance\File\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Gabrielqs\Boleto\Model\ResourceModel\Remittance\File\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">boleto_remittance_file</argument>
+            <argument name="eventPrefix" xsi:type="string">boleto_remittance_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">remittance_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Gabrielqs\Boleto\Model\ResourceModel\Remittance\File</argument>
+        </arguments>
+    </type>
+
+</config>

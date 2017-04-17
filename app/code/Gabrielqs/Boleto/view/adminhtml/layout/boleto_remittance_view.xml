@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="boleto_remittance_view_tab_container" template="Gabrielqs_Boleto::remittance/view/tab/container.phtml">
+                <block class="Gabrielqs\Boleto\Block\Adminhtml\Remittance\View\Tab" name="boleto_remittance_view_tab" />
+                <block class="Magento\Framework\View\Element\Template" name="boleto_remittance_view_content" template="Gabrielqs_Boleto::remittance/view/tab/content.phtml" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

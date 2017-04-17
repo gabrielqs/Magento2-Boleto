@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <payment>
+            <!-- Boleto Boleto - Default Values-->
+            <boleto_boleto>
+                <model>Gabrielqs\Boleto\Model\Boleto</model>
+                <payment_action>order</payment_action>
+                <active>0</active>
+                <title>Boleto</title>
+                <sort_order>20</sort_order>
+                <min_order_total>0</min_order_total>
+                <remittance_schedule>0 22 * * *</remittance_schedule>
+                <remittance_file_name_format>\R\Mymd\.\R\E\M</remittance_file_name_format>
+            </boleto_boleto>
+        </payment>
+    </default>
+</config>

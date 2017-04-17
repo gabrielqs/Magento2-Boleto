@@ -1,0 +1,20 @@
+<table class="admin__table-secondary">
+    <tbody>
+    <tr>
+        <th><?php echo __('File Name'); ?></th>
+        <td><?php echo $block->getFileName(); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Status'); ?></th>
+        <td><?php echo __($block->getStatus()); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Created'); ?></th>
+        <td><?php echo $block->getCreationTime(); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Updated'); ?></th>
+        <td><?php echo $block->getUpdateTime(); ?></td>
+    </tr>
+    </tbody>
+</table>

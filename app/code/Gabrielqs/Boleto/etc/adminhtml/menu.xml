@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Gabrielqs_Boleto::boleto" title="Boletos" translate="title" module="Gabrielqs_Boleto" sortOrder="20" parent="Magento_Sales::sales" dependsOnModule="Gabrielqs_Boleto" resource="Gabrielqs_Boleto::boleto"/>
+        <add id="Gabrielqs_Boleto::remittance_files" title="Remittance Files" translate="title" module="Gabrielqs_Boleto" sortOrder="10" parent="Gabrielqs_Boleto::boleto" action="boleto/remittance" resource="Gabrielqs_Boleto::remittance_files" />
+        <add id="Gabrielqs_Boleto::returns_files" title="Return Files" translate="title" module="Gabrielqs_Boleto" sortOrder="10" parent="Gabrielqs_Boleto::boleto" action="boleto/returns" resource="Gabrielqs_Boleto::returns_files"/>
+    </menu>
+</config>

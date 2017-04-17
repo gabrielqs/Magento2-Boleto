@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales">
+                    <resource id="Gabrielqs_Boleto::boleto" title="Boletos" translate="title" sortOrder="20">
+                        <resource id="Gabrielqs_Boleto::remittance_files"  title="Remittance Files" translate="title" sortOrder="10" />
+                        <resource id="Gabrielqs_Boleto::returns_files"   title="Return Files" translate="title" sortOrder="20" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

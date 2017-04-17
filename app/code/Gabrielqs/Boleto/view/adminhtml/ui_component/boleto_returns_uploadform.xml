@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">boleto_returns_uploadform.returns_form_data_source</item>
+            <item name="deps" xsi:type="string">boleto_returns_uploadform.returns_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Upload Return File</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">boleto_returns_uploadform</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Gabrielqs\Boleto\Block\Adminhtml\Returns\Upload\BackButton</item>
+            <item name="save" xsi:type="string">Gabrielqs\Boleto\Block\Adminhtml\Returns\Upload\UploadButton</item>
+        </item>
+    </argument>
+    <dataSource name="returns_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Gabrielqs\Boleto\Model\Returns\DataProvider</argument>
+            <argument name="name" xsi:type="string">returns_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">returns_file_id</argument>
+            <argument name="requestFieldName" xsi:type="string">returns_file_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="boleto/returns/uploadpost"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="returns_file_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">returns</item>
+                    <item name="dataScope" xsi:type="string">returns_file_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">file</item>
+                    <item name="label" xsi:type="string" translate="true">File</item>
+                    <item name="formElement" xsi:type="string">file</item>
+                    <item name="source" xsi:type="string">returns</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">file</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

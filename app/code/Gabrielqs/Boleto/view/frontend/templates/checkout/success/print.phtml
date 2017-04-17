@@ -1,0 +1,7 @@
+<?php if ($block->isShow()): ?>
+    <div>
+        <a href="<?php echo $block->getPrintUrl(); ?>" target="_blank">
+            <?php echo $block->escapeHtml(__('Print Boleto')) ?>
+        </a>
+    </div>
+<?php endif;

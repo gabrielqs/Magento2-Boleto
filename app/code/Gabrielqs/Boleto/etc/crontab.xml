@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="gabrielqs_boleto_returns_files_process" instance="Gabrielqs\Boleto\Model\Returns\Cron" method="processFiles">
+            <schedule>*/10 * * * *</schedule>
+        </job>
+        <job name="gabrielqs_boleto_remittance_files_process" instance="Gabrielqs\Boleto\Model\Remittance\Cron" method="processOrders">
+            <config_path>payment/boleto_boleto/remittance_schedule</config_path>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <container name="root">
+            <block class="Gabrielqs\Boleto\Block\Adminhtml\Remittance\View\Tab\Info" name="boleto_remittance_view_tab_info"
+                template="remittance/view/tab/info.phtml" />
+        </container>
+    </body>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="boleto_returns_view_tab_container" template="Gabrielqs_Boleto::returns/view/tab/container.phtml">
+                <block class="Gabrielqs\Boleto\Block\Adminhtml\Returns\View\Tab" name="boleto_returns_view_tab" />
+                <block class="Magento\Framework\View\Element\Template" name="boleto_returns_view_content" template="Gabrielqs_Boleto::returns/view/tab/content.phtml" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

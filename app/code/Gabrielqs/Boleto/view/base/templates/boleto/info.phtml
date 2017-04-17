@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Gabrielqs\Boleto\Block\Boleto\Info
+ */
+?>
+<dl class="payment-method checkmemo">
+    <dt class="title"><?php echo $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+    <dd class="content">
+        <a href="<?php echo $block->getPrintUrl(); ?>" target="_blank">
+            <?php echo $block->escapeHtml(__('Print Boleto')) ?>
+        </a>
+    </dd>
+</dl>
