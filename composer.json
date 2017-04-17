@@ -1,0 +1,28 @@
+{
+  "name": "gabrielqs/boleto",
+  "description": "Módulo Magento 2 para emissão de boletos, com geração de arquivos de remessa, e processamento de arquivos de retorno",
+  "type": "magento2-module",
+  "version": "0.1.1",
+  "license": [
+    "OSL-3.0"
+  ],
+  "require": {
+    "kriansa/openboleto": "v1.0",
+    "andersondanilo/cnab_php": "1.3.*"
+  },
+  "authors": [
+    {
+      "name": "Gabriel Queiroz Silva",
+      "email": "gabrielqs@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Gabrielqs\\Boleto\\": ""
+    }
+  }
+}
