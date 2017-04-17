@@ -4,7 +4,7 @@
   "type": "magento2-module",
   "version": "0.1.1",
   "license": [
-    "OSL-3.0"
+    "MIT"
   ],
   "require": {
     "kriansa/openboleto": "v1.0",
