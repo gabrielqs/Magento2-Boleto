@@ -50,20 +50,26 @@ class ConfigProvider extends CcGenericConfigProvider
      */
     public function getConfig()
     {
-        $config = parent::getConfig();
+        $method = $this->_boletoHelper->getMethodCode();
 
-        if ($this->_boletoHelper->getConfigData('active')) {
-            $checkoutImageAsset = $this->_assetRepo->createAsset('Gabrielqs_Boleto::images/checkout.png');
-            $config['payment'][$this->_boletoHelper->getMethodCode()] = [
-                'active'               => true,
-                'checkout_image'           => $checkoutImageAsset->getUrl()
-            ];
-        } else {
-            $config['payment'][$this->_boletoHelper->getMethodCode()] = [
-                'active'                                  => false,
+        if (!$this->_boletoHelper->getConfigData('active')) {
+            return [
+                'payment' => [
+                    $method => [
+                        'active' => false,
+                    ]
+                ]
             ];
         }
 
-        return $config;
+        $checkoutImageAsset = $this->_assetRepo->createAsset('Gabrielqs_Boleto::images/checkout.png');
+        return [
+            'payment' => [
+                $method => [
+                    'active'         => true,
+                    'checkout_image' => $checkoutImageAsset->getUrl()
+                ]
+            ]
+        ];
     }
 }
